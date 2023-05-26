@@ -8,6 +8,9 @@ public class Game : MonoBehaviour
 
     public TextMeshProUGUI ui;
 
+    private Coroutine cpsCoroutine; 
+
+
     public void Increment()
     {
         GameManager.force += GameManager.multiplier;
@@ -40,17 +43,69 @@ public class Game : MonoBehaviour
             PlayerPrefs.SetInt("force", GameManager.force);
             PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
         }
+
+        if(num == 4 && GameManager.force >= 12000)
+        {
+            GameManager.multiplier += 1000;
+            GameManager.force -= 12000;
+            PlayerPrefs.SetInt("force", GameManager.force);
+            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+        }
     }
+
+    public void CPS(int num)
+    {
+        int cost =  GameManager.CPS_values[num][1];
+        int value = GameManager.CPS_values[num][0];
+
+        if(GameManager.force >= cost)
+        {
+            GameManager.force -= cost;
+            PlayerPrefs.SetInt("force", GameManager.force);
+            
+            GameManager.CPS += value;
+            PlayerPrefs.SetInt("CPS", GameManager.CPS);
+        }
+    }
+
+    private IEnumerator UpdateForceCPS()
+    {
+        while (true)
+        {
+            GameManager.force += GameManager.CPS;
+            PlayerPrefs.SetInt("force", GameManager.force);
+            
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
 
     public void Reset()
     {
         PlayerPrefs.DeleteAll();
         GameManager.multiplier = 1;
         GameManager.force = 0;
+        GameManager.CPS = 0;
+    }
+
+    public void openUpgradesMenu()
+    {
+        GameManager.mainScreen.SetActive(false);
+        GameManager.upgradesScreen.SetActive(true);
+    }
+
+    public void closeUpgradesMenu()
+    {
+        GameManager.mainScreen.SetActive(true);
+        GameManager.upgradesScreen.SetActive(false);
     }
 
     void Update()
     {
         ui.text = GameManager.force.ToString();
+        if (cpsCoroutine == null && GameManager.CPS > 0)
+        {
+            cpsCoroutine = StartCoroutine(UpdateForceCPS());
+        }
     }
 }
