@@ -51,6 +51,22 @@ public class Game : MonoBehaviour
             PlayerPrefs.SetInt("force", GameManager.force);
             PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
         }
+
+        if(num == 5 && GameManager.force >= 50000)
+        {
+            GameManager.multiplier += 10000;
+            GameManager.force -= 50000;
+            PlayerPrefs.SetInt("force", GameManager.force);
+            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+        }
+
+        if(num == 6 && GameManager.force >= 100000)
+        {
+            GameManager.multiplier += 100000;
+            GameManager.force -= 100000;
+            PlayerPrefs.SetInt("force", GameManager.force);
+            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+        }
     }
 
     public void CPS(int num)
