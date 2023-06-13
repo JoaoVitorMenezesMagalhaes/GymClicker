@@ -3,53 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Game : MonoBehaviour
+public class Game : MonoBehaviour, IDataPersistence
 {
-
     public TextMeshProUGUI ui;
 
     private Coroutine cpsCoroutine; 
 
+    private int force;
+    private int multiplier;
+    private int CPS_value;
 
     public void Increment()
     {
-        GameManager.force += GameManager.multiplier;
-        PlayerPrefs.SetInt("force", GameManager.force);
+        force += multiplier;
     }
 
     public void Buy(int num)
     {
-        if(num == 1 && GameManager.force >= 25)
+        if(num == 1 && force >= 25)
         {
-            GameManager.multiplier += 1;
-            GameManager.force -= 25;
-            PlayerPrefs.SetInt("force", GameManager.force);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+            multiplier += 1;
+            force -= 25;
         }
         
-        if(num == 2 && GameManager.force >= 125)
+        if(num == 2 && force >= 125)
         {
-            GameManager.multiplier += 10;
-            GameManager.force -= 125; 
-            PlayerPrefs.SetInt("force", GameManager.force);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
-
+            multiplier += 10;
+            force -= 125; 
         }
 
-        if(num == 3 && GameManager.force >= 1500)
+        if(num == 3 && force >= 1500)
         {
-            GameManager.multiplier += 100;
-            GameManager.force -= 1500;
-            PlayerPrefs.SetInt("force", GameManager.force);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+            multiplier += 100;
+            force -= 1500;
         }
 
-        if(num == 4 && GameManager.force >= 12000)
+        if(num == 4 && force >= 12000)
         {
-            GameManager.multiplier += 1000;
-            GameManager.force -= 12000;
-            PlayerPrefs.SetInt("force", GameManager.force);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+            multiplier += 1000;
+            force -= 12000;
         }
     }
 
@@ -58,13 +50,11 @@ public class Game : MonoBehaviour
         int cost =  GameManager.CPS_values[num][1];
         int value = GameManager.CPS_values[num][0];
 
-        if(GameManager.force >= cost)
+        if(force >= cost)
         {
-            GameManager.force -= cost;
-            PlayerPrefs.SetInt("force", GameManager.force);
+            force -= cost;
             
-            GameManager.CPS += value;
-            PlayerPrefs.SetInt("CPS", GameManager.CPS);
+            CPS_value += value;
         }
     }
 
@@ -72,20 +62,17 @@ public class Game : MonoBehaviour
     {
         while (true)
         {
-            GameManager.force += GameManager.CPS;
-            PlayerPrefs.SetInt("force", GameManager.force);
+            force += CPS_value;
             
             yield return new WaitForSeconds(1f);
         }
     }
 
-
     public void Reset()
     {
-        PlayerPrefs.DeleteAll();
-        GameManager.multiplier = 1;
-        GameManager.force = 0;
-        GameManager.CPS = 0;
+        multiplier = 1;
+        force = 0;
+        CPS_value = 0;
     }
 
     public void openUpgradesMenu() {
@@ -110,10 +97,25 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        ui.text = GameManager.force.ToString();
-        if (cpsCoroutine == null && GameManager.CPS > 0)
+        ui.text = force.ToString();
+        if (cpsCoroutine == null && CPS_value > 0)
         {
             cpsCoroutine = StartCoroutine(UpdateForceCPS());
         }
     }
+
+    public void LoadData(GameData data)
+    {
+        this.force = data.force;
+        this.multiplier = data.multiplier;
+        this.CPS_value = data.CPS_value;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.force = this.force;
+        data.multiplier = this.multiplier;
+        data.CPS_value = this.CPS_value;
+    }
+
 }
