@@ -11,14 +11,18 @@ public class GameManager : MonoBehaviour
     public static GameObject mainScreen;
     public static GameObject upgradesScreen;
 
+    public static GameObject profileScreen;
+
     public static Dictionary<int, List<int>> CPS_values = new Dictionary<int, List<int>>();
 
     void Start()
     {
         mainScreen = GameObject.FindWithTag("MainScreen");
         upgradesScreen = GameObject.FindWithTag("UpgradesScreen");
+        profileScreen = GameObject.FindWithTag("ProfileScreen");
 
         upgradesScreen.SetActive(false);
+        profileScreen.SetActive(false);
 
         multiplier = PlayerPrefs.GetInt("multiplier", 1);
         force = PlayerPrefs.GetInt("force", 0);

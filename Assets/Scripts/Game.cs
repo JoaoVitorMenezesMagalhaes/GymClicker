@@ -88,16 +88,24 @@ public class Game : MonoBehaviour
         GameManager.CPS = 0;
     }
 
-    public void openUpgradesMenu()
-    {
-        GameManager.mainScreen.SetActive(false);
-        GameManager.upgradesScreen.SetActive(true);
+    public void openUpgradesMenu() {
+      GameManager.mainScreen.SetActive(false);
+      GameManager.upgradesScreen.SetActive(true);
     }
 
-    public void closeUpgradesMenu()
-    {
-        GameManager.mainScreen.SetActive(true);
-        GameManager.upgradesScreen.SetActive(false);
+    public void closeUpgradesMenu() {
+      GameManager.mainScreen.SetActive(true);
+      GameManager.upgradesScreen.SetActive(false);
+    }
+
+    public void openProfileMenu() {
+      GameManager.mainScreen.SetActive(false);
+      GameManager.profileScreen.SetActive(true);
+    }
+
+    public void closeProfileMenu() {
+      GameManager.mainScreen.SetActive(true);
+      GameManager.profileScreen.SetActive(false);
     }
 
     void Update()
