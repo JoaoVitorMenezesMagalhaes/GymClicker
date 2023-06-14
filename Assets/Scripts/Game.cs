@@ -6,6 +6,12 @@ using TMPro;
 public class Game : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI ui;
+    public TextMeshProUGUI forceValue;
+    public TextMeshProUGUI sessionValue;
+    public TextMeshProUGUI lifetimeValue;
+    public TextMeshProUGUI prestigeValue;
+    public TextMeshProUGUI wheyEarningsValue;
+    public TextMeshProUGUI wheySpentValue;
 
     private Coroutine cpsCoroutine; 
 
@@ -13,9 +19,12 @@ public class Game : MonoBehaviour, IDataPersistence
     private int multiplier;
     private int CPS_value;
 
-    public void Increment()
-    {
-        force += multiplier;
+    public void Increment() {
+      force += multiplier;
+
+      forceValue.text = force.ToString();
+      sessionValue.text = (int.Parse(sessionValue.text) + multiplier).ToString();
+      lifetimeValue.text = (int.Parse(lifetimeValue.text) + multiplier).ToString();
     }
 
     public void Buy(int num)
@@ -43,6 +52,8 @@ public class Game : MonoBehaviour, IDataPersistence
             multiplier += 1000;
             force -= 12000;
         }
+
+        forceValue.text = force.ToString();
     }
 
     public void CPS(int num)
@@ -58,21 +69,24 @@ public class Game : MonoBehaviour, IDataPersistence
         }
     }
 
-    private IEnumerator UpdateForceCPS()
-    {
-        while (true)
-        {
-            force += CPS_value;
-            
-            yield return new WaitForSeconds(1f);
-        }
+    private IEnumerator UpdateForceCPS() {
+      while (true) {
+        force += CPS_value;
+        forceValue.text = force.ToString();
+        sessionValue.text = (int.Parse(sessionValue.text) + CPS_value).ToString();
+        lifetimeValue.text = (int.Parse(lifetimeValue.text) + CPS_value).ToString();
+        yield return new WaitForSeconds(1f);
+      }
     }
 
-    public void Reset()
-    {
-        multiplier = 1;
-        force = 0;
-        CPS_value = 0;
+    public void Reset() {
+      multiplier = 1;
+      force = 0;
+      CPS_value = 0;
+
+      sessionValue.text = "0";
+      forceValue.text = "0";
+      prestigeValue.text = (int.Parse(prestigeValue.text) + 1).ToString();
     }
 
     public void openUpgradesMenu() {
@@ -95,13 +109,12 @@ public class Game : MonoBehaviour, IDataPersistence
       GameManager.profileScreen.SetActive(false);
     }
 
-    void Update()
-    {
-        ui.text = force.ToString();
-        if (cpsCoroutine == null && CPS_value > 0)
-        {
-            cpsCoroutine = StartCoroutine(UpdateForceCPS());
-        }
+    void Update() {
+      ui.text = force.ToString();
+
+      if (cpsCoroutine == null && CPS_value > 0) {
+        cpsCoroutine = StartCoroutine(UpdateForceCPS());
+      }
     }
 
     public void LoadData(GameData data)
