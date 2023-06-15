@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44ad4c0e0b9cf2b41914c45d5cb6309c
+guid: 5fdd0560a7180734e81face5085a3eeb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,112 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_0
+      name: Clicker 3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4d5588808e3bb04597948b579d62972
+      internalID: 1625630217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clicker 3_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1800
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c86a42fc4cab3f4ebd46b456370e863
+      internalID: 498176801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clicker 3_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1800
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce580bcebf4bae428cc704c35e81a95
+      internalID: 762262190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clicker 3_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1800
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 689586f4dcc9e214fbb221c7f124ceab
+      internalID: 1049281063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clicker 3_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1800
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c35f6244479c74c9acb89aa27a6710
+      internalID: -1939022781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clicker 3_5
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9e0d6cd90ca07d45a45c54b2fd5a3be
-      internalID: -741039872
+      spriteID: 0d10460bed65aa441a5537459208e9b3
+      internalID: 1551158978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_1
+      name: Clicker 3_6
       rect:
         serializedVersion: 2
         x: 300
@@ -164,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4460d07af55f144eb87860f8bd038e4
-      internalID: -1367465477
+      spriteID: 74e98989e5a21a042bd21fbd4b178b88
+      internalID: 759689251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_2
+      name: Clicker 3_7
       rect:
         serializedVersion: 2
         x: 600
@@ -185,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8151adbcf424074e83c5cab27a66e83
-      internalID: 2127155745
+      spriteID: 99f0470fd38b21447ba4fe62a7cd4539
+      internalID: 1608649497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_3
+      name: Clicker 3_8
       rect:
         serializedVersion: 2
         x: 900
@@ -206,14 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48fda5bf500e0fc40acd7463e7c0a07d
-      internalID: -456599609
+      spriteID: fd061180d53078042b331a7c5e69170b
+      internalID: -1653755055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_4
+      name: Clicker 3_9
       rect:
         serializedVersion: 2
         x: 1200
@@ -227,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88d48295e2d40b34d93ca681dc405341
-      internalID: 182921530
+      spriteID: 26434e42936cfbb4e8d97c7347c1e640
+      internalID: 1295755041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_5
+      name: Clicker 3_10
       rect:
         serializedVersion: 2
         x: 0
@@ -248,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95a73b1399b5112419c3739007d26b34
-      internalID: -790971223
+      spriteID: abbdb7196043ab540906d49384898001
+      internalID: -2090994260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_6
+      name: Clicker 3_11
       rect:
         serializedVersion: 2
         x: 300
@@ -269,14 +374,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6690714b366e084f9bc55f2d3e40dc4
-      internalID: -64296250
+      spriteID: 2fd47875ca7e90349814f9059588032f
+      internalID: 736111138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_7
+      name: Clicker 3_12
       rect:
         serializedVersion: 2
         x: 600
@@ -290,14 +395,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 750f5a540c3610f4eb95db763642293f
-      internalID: 750942270
+      spriteID: 0606ac239a89b834cb87c8cdc18d67f6
+      internalID: 734641513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_8
+      name: Clicker 3_13
       rect:
         serializedVersion: 2
         x: 900
@@ -311,14 +416,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12ffe3ac7ded57c4fb6b0e6b7edbb1c2
-      internalID: 936599758
+      spriteID: 638e6d0fb5391b946b12ec8c6db9869c
+      internalID: 1131075581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_9
+      name: Clicker 3_14
       rect:
         serializedVersion: 2
         x: 1200
@@ -332,14 +437,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adf6f6c8173af914e9816628a6fe0e3c
-      internalID: 320972463
+      spriteID: b4798077493f9af4ea08858077f22d6e
+      internalID: 645915018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_10
+      name: Clicker 3_15
       rect:
         serializedVersion: 2
         x: 0
@@ -353,14 +458,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed57cbcb4330135498e9743853950495
-      internalID: -1873626414
+      spriteID: 50bb37b242964984493fa0b226bfbece
+      internalID: -1373015341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_11
+      name: Clicker 3_16
       rect:
         serializedVersion: 2
         x: 300
@@ -374,14 +479,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55dad9bbc6de79b4e892151e39af3a3c
-      internalID: 1340167096
+      spriteID: 02d242ffd5253ed45931ac2f914f5c9d
+      internalID: -1458956475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_12
+      name: Clicker 3_17
       rect:
         serializedVersion: 2
         x: 600
@@ -395,14 +500,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9340a26aee63874b87f9c3449012e4c
-      internalID: 412102933
+      spriteID: f8e0626784b2365489c19258d3932f04
+      internalID: 160236438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_13
+      name: Clicker 3_18
       rect:
         serializedVersion: 2
         x: 900
@@ -416,14 +521,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e6382299482d3d4897d020ba215a040
-      internalID: 1661133033
+      spriteID: 336c3c9c95a020544842d30f52ea62f6
+      internalID: -1213307409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_14
+      name: Clicker 3_19
       rect:
         serializedVersion: 2
         x: 1200
@@ -437,14 +542,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28f25771634626a458aa8136e13e5e53
-      internalID: -2032995461
+      spriteID: 7e06783dccf13444fa83c90bf8f27ad1
+      internalID: 1388226011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_15
+      name: Clicker 3_20
       rect:
         serializedVersion: 2
         x: 0
@@ -458,14 +563,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93292563962603c4a8e709d947d0626c
-      internalID: 1356854122
+      spriteID: 42330942d871e754e9cade2f76fc9bb4
+      internalID: -810485704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_16
+      name: Clicker 3_21
       rect:
         serializedVersion: 2
         x: 300
@@ -479,14 +584,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ec926b94343171429bfdd81a5f8b3d8
-      internalID: 1308186621
+      spriteID: 410f58a879f2c084391fc857609fe32f
+      internalID: 687004690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_17
+      name: Clicker 3_22
       rect:
         serializedVersion: 2
         x: 600
@@ -500,14 +605,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 784158fdc50c10742a1bf91bb9fab671
-      internalID: 440431166
+      spriteID: f20c8457796eb7d47ba2aa24a9bb1082
+      internalID: 2057124909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_18
+      name: Clicker 3_23
       rect:
         serializedVersion: 2
         x: 900
@@ -521,14 +626,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57764a5aa2a6fcb4697a7b82d37de605
-      internalID: 1961114440
+      spriteID: 088766f530fc9694a9d4d923d5aa95c9
+      internalID: -1625854908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_19
+      name: Clicker 3_24
       rect:
         serializedVersion: 2
         x: 1200
@@ -542,14 +647,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f58d095d5eb8ea347ba602d2f74b330f
-      internalID: -1060687862
+      spriteID: c79efbaae54616a47b3fa6f28c000272
+      internalID: 1028046833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_20
+      name: Clicker 3_25
       rect:
         serializedVersion: 2
         x: 0
@@ -563,14 +668,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf9ce196835b08e42a19107148d0a132
-      internalID: -620008054
+      spriteID: edb8a7d4439e4f0479d798492714958d
+      internalID: -1648218549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_21
+      name: Clicker 3_26
       rect:
         serializedVersion: 2
         x: 300
@@ -584,14 +689,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d369a57cf6936d6479af2eef72f4cd76
-      internalID: -2021666190
+      spriteID: f27b608874e496444ae9571e2a176852
+      internalID: -1745422190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_22
+      name: Clicker 3_27
       rect:
         serializedVersion: 2
         x: 600
@@ -605,14 +710,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffb4c3b03f3264c4c95736321f2b7a36
-      internalID: -688094307
+      spriteID: 932da11791800224197f3c6cb15959db
+      internalID: -388197726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_23
+      name: Clicker 3_28
       rect:
         serializedVersion: 2
         x: 900
@@ -626,14 +731,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f809455e599f34d4aa3412aba2ba15b0
-      internalID: 505435982
+      spriteID: cfe4b441c1b5bbb449a8c0d8588db9fc
+      internalID: -570455631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_24
+      name: Clicker 3_29
       rect:
         serializedVersion: 2
         x: 1200
@@ -647,14 +752,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 173ae0059b0bbff409fd8d8f4713ba95
-      internalID: 1141229984
+      spriteID: d0ed6fe1bfe67e04d9fd0ed4ca940c61
+      internalID: -1578476825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_25
+      name: Clicker 3_30
       rect:
         serializedVersion: 2
         x: 0
@@ -668,14 +773,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 211f96820c690fb44941c2ac2ef4370c
-      internalID: -777965860
+      spriteID: ee2647cb1a60c1b478e05fcd6324b9ad
+      internalID: 1243665898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_26
+      name: Clicker 3_31
       rect:
         serializedVersion: 2
         x: 300
@@ -689,14 +794,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b478421905f3f4b4ba1ebf95687d3d5f
-      internalID: 163708382
+      spriteID: e2031b5ff55608c42ba1486f39c9b983
+      internalID: -1371853944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_27
+      name: Clicker 3_32
       rect:
         serializedVersion: 2
         x: 600
@@ -710,14 +815,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee3d9d42c8e7e3d429a0681d8c23c305
-      internalID: 673727368
+      spriteID: 1c55654a426bed147b70cfe3139fc51f
+      internalID: -1952585781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_28
+      name: Clicker 3_33
       rect:
         serializedVersion: 2
         x: 900
@@ -731,14 +836,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eae5e6262ece603448567033fa9fb868
-      internalID: -1336236529
+      spriteID: dff766a499861f54bbeba63db42fe981
+      internalID: 259962612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif.com-gif-maker (7)_29
+      name: Clicker 3_34
       rect:
         serializedVersion: 2
         x: 1200
@@ -752,8 +857,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c8071734e689614db5c054d4d629729
-      internalID: -441073699
+      spriteID: 77d3b3f8e6f9d0247ba0b46e9f0559a3
+      internalID: 1925271399
       vertices: []
       indices: 
       edges: []
@@ -769,36 +874,41 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ezgif.com-gif-maker (7)_0: -741039872
-      ezgif.com-gif-maker (7)_1: -1367465477
-      ezgif.com-gif-maker (7)_10: -1873626414
-      ezgif.com-gif-maker (7)_11: 1340167096
-      ezgif.com-gif-maker (7)_12: 412102933
-      ezgif.com-gif-maker (7)_13: 1661133033
-      ezgif.com-gif-maker (7)_14: -2032995461
-      ezgif.com-gif-maker (7)_15: 1356854122
-      ezgif.com-gif-maker (7)_16: 1308186621
-      ezgif.com-gif-maker (7)_17: 440431166
-      ezgif.com-gif-maker (7)_18: 1961114440
-      ezgif.com-gif-maker (7)_19: -1060687862
-      ezgif.com-gif-maker (7)_2: 2127155745
-      ezgif.com-gif-maker (7)_20: -620008054
-      ezgif.com-gif-maker (7)_21: -2021666190
-      ezgif.com-gif-maker (7)_22: -688094307
-      ezgif.com-gif-maker (7)_23: 505435982
-      ezgif.com-gif-maker (7)_24: 1141229984
-      ezgif.com-gif-maker (7)_25: -777965860
-      ezgif.com-gif-maker (7)_26: 163708382
-      ezgif.com-gif-maker (7)_27: 673727368
-      ezgif.com-gif-maker (7)_28: -1336236529
-      ezgif.com-gif-maker (7)_29: -441073699
-      ezgif.com-gif-maker (7)_3: -456599609
-      ezgif.com-gif-maker (7)_4: 182921530
-      ezgif.com-gif-maker (7)_5: -790971223
-      ezgif.com-gif-maker (7)_6: -64296250
-      ezgif.com-gif-maker (7)_7: 750942270
-      ezgif.com-gif-maker (7)_8: 936599758
-      ezgif.com-gif-maker (7)_9: 320972463
+      Clicker 3_0: 1625630217
+      Clicker 3_1: 498176801
+      Clicker 3_10: -2090994260
+      Clicker 3_11: 736111138
+      Clicker 3_12: 734641513
+      Clicker 3_13: 1131075581
+      Clicker 3_14: 645915018
+      Clicker 3_15: -1373015341
+      Clicker 3_16: -1458956475
+      Clicker 3_17: 160236438
+      Clicker 3_18: -1213307409
+      Clicker 3_19: 1388226011
+      Clicker 3_2: 762262190
+      Clicker 3_20: -810485704
+      Clicker 3_21: 687004690
+      Clicker 3_22: 2057124909
+      Clicker 3_23: -1625854908
+      Clicker 3_24: 1028046833
+      Clicker 3_25: -1648218549
+      Clicker 3_26: -1745422190
+      Clicker 3_27: -388197726
+      Clicker 3_28: -570455631
+      Clicker 3_29: -1578476825
+      Clicker 3_3: 1049281063
+      Clicker 3_30: 1243665898
+      Clicker 3_31: -1371853944
+      Clicker 3_32: -1952585781
+      Clicker 3_33: 259962612
+      Clicker 3_34: 1925271399
+      Clicker 3_4: -1939022781
+      Clicker 3_5: 1551158978
+      Clicker 3_6: 759689251
+      Clicker 3_7: 1608649497
+      Clicker 3_8: -1653755055
+      Clicker 3_9: 1295755041
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
