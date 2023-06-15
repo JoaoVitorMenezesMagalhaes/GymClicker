@@ -8,6 +8,7 @@ TagManager:
   - UpgradesScreen
   - ProfileScreen
   - ShopScreen
+  - PrestigeScreen
   layers:
   - Default
   - TransparentFX

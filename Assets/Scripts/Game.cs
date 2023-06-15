@@ -7,6 +7,7 @@ public class Game : MonoBehaviour, IDataPersistence
 {
     public TextMeshProUGUI forceText;
     public TextMeshProUGUI wheyText;
+    public TextMeshProUGUI wheyToClaimText;
     public TextMeshProUGUI forceValue;
     public TextMeshProUGUI sessionValue;
     public TextMeshProUGUI lifetimeValue;
@@ -21,8 +22,10 @@ public class Game : MonoBehaviour, IDataPersistence
     private int CPS_value;
     private int whey;
 
+    private int wheyToClaim;
+
     public void Increment() {
-      force += multiplier;
+      force += (multiplier + (multiplier * ((whey*2)/100)));
 
       forceValue.text = force.ToString();
       sessionValue.text = (int.Parse(sessionValue.text) + multiplier).ToString();
@@ -73,7 +76,7 @@ public class Game : MonoBehaviour, IDataPersistence
 
     private IEnumerator UpdateForceCPS() {
       while (true) {
-        force += CPS_value;
+        force += (CPS_value + (CPS_value * ((whey*2)/100)));
         forceValue.text = force.ToString();
         sessionValue.text = (int.Parse(sessionValue.text) + CPS_value).ToString();
         lifetimeValue.text = (int.Parse(lifetimeValue.text) + CPS_value).ToString();
@@ -81,14 +84,34 @@ public class Game : MonoBehaviour, IDataPersistence
       }
     }
 
-    public void Reset() {
+    public void Prestige() {
+      if (wheyToClaim > 0) {
+        multiplier = 1;
+        force = 0;
+        CPS_value = 0;
+        whey += wheyToClaim;
+
+        sessionValue.text = "0";
+        forceValue.text = "0";
+        prestigeValue.text = (int.Parse(prestigeValue.text) + 1).ToString();
+        wheyEarningsValue.text = (int.Parse(prestigeValue.text) + wheyToClaim).ToString();
+
+        wheyToClaim = 0;
+      }
+    }
+
+    public void HardReset() {
       multiplier = 1;
       force = 0;
       CPS_value = 0;
+      whey += wheyToClaim;
 
       sessionValue.text = "0";
       forceValue.text = "0";
-      prestigeValue.text = (int.Parse(prestigeValue.text) + 1).ToString();
+      prestigeValue.text = "0";
+      wheyEarningsValue.text = "0";
+
+      wheyToClaim = 0;
     }
 
     public void openUpgradesMenu() {
@@ -121,9 +144,22 @@ public class Game : MonoBehaviour, IDataPersistence
       GameManager.profileScreen.SetActive(false);
     }
 
+    public void openPrestigeMenu() {
+      GameManager.mainScreen.SetActive(false);
+      GameManager.prestigeScreen.SetActive(true);
+    }
+
+    public void closePrestigeMenu() {
+      GameManager.mainScreen.SetActive(true);
+      GameManager.prestigeScreen.SetActive(false);
+    }
+
     void Update() {
+      wheyToClaim = Mathf.RoundToInt((Mathf.Sqrt(int.Parse(lifetimeValue.text) / 1000000000000000) * 150) - whey);
+
       forceText.text = force.ToString();
       wheyText.text = whey.ToString();
+      wheyToClaimText.text = wheyToClaim.ToString();
 
       if (cpsCoroutine == null && CPS_value > 0) {
         cpsCoroutine = StartCoroutine(UpdateForceCPS());
@@ -136,6 +172,12 @@ public class Game : MonoBehaviour, IDataPersistence
         this.multiplier = data.multiplier;
         this.CPS_value = data.CPS_value;
         this.whey = data.whey;
+        this.forceValue.text = data.force.ToString();
+        this.sessionValue.text = data.sessionForce.ToString();
+        this.lifetimeValue.text = data.lifetimeForce.ToString();
+        this.prestigeValue.text = data.totalPrestiges.ToString();
+        this.wheyEarningsValue.text = data.lifetimeWheyEarned.ToString();
+        this.wheySpentValue.text = data.lifetimeWheySpent.ToString();
     }
 
     public void SaveData(ref GameData data)
@@ -144,6 +186,11 @@ public class Game : MonoBehaviour, IDataPersistence
         data.multiplier = this.multiplier;
         data.CPS_value = this.CPS_value;
         data.whey = this.whey;
+        data.sessionForce = int.Parse(this.sessionValue.text);
+        data.lifetimeForce = int.Parse(this.lifetimeValue.text);
+        data.totalPrestiges = int.Parse(this.prestigeValue.text);
+        data.lifetimeWheyEarned = int.Parse(this.wheyEarningsValue.text);
+        data.lifetimeWheySpent = int.Parse(this.wheySpentValue.text);
     }
 
 }

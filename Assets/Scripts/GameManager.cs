@@ -8,23 +8,23 @@ public class GameManager : MonoBehaviour
     public static GameObject upgradesScreen;
     public static GameObject shopScreen;
     public static GameObject profileScreen;
+    public static GameObject prestigeScreen;
 
     public static Dictionary<int, List<int>> CPS_values = new Dictionary<int, List<int>>();
 
-    void Start()
-    {
-        mainScreen = GameObject.FindWithTag("MainScreen");
-        upgradesScreen = GameObject.FindWithTag("UpgradesScreen");
-        profileScreen = GameObject.FindWithTag("ProfileScreen");
-        shopScreen = GameObject.FindWithTag("ShopScreen");
+    void Start() {
+      mainScreen = GameObject.FindWithTag("MainScreen");
+      upgradesScreen = GameObject.FindWithTag("UpgradesScreen");
+      profileScreen = GameObject.FindWithTag("ProfileScreen");
+      prestigeScreen = GameObject.FindWithTag("PrestigeScreen");
+      shopScreen = GameObject.FindWithTag("ShopScreen");
 
-        upgradesScreen.SetActive(false);
-        profileScreen.SetActive(false);
-        shopScreen.SetActive(false);
+      upgradesScreen.SetActive(false);
+      prestigeScreen.SetActive(false);
+      profileScreen.SetActive(false);
+      shopScreen.SetActive(false);
 
-        CPS_values.Add(1, new List<int> {1, 100});
-        CPS_values.Add(2, new List<int> {10, 800});
+      CPS_values.Add(1, new List<int> {1, 100});
+      CPS_values.Add(2, new List<int> {10, 800});
     }
-
-
 }
