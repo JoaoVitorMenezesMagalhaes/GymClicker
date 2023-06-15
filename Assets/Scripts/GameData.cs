@@ -8,11 +8,13 @@ public class GameData
     public int force;
     public int multiplier;
     public int CPS_value;
+    public int whey;
 
     public GameData()
     {    
         this.force = 0;
         this.multiplier = 1;
         this.CPS_value = 0;
+        this.whey = 0;
     }
 }

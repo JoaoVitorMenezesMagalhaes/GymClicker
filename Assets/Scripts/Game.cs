@@ -5,7 +5,8 @@ using TMPro;
 
 public class Game : MonoBehaviour, IDataPersistence
 {
-    public TextMeshProUGUI ui;
+    public TextMeshProUGUI forceText;
+    public TextMeshProUGUI wheyText;
     public TextMeshProUGUI forceValue;
     public TextMeshProUGUI sessionValue;
     public TextMeshProUGUI lifetimeValue;
@@ -18,6 +19,7 @@ public class Game : MonoBehaviour, IDataPersistence
     private int force;
     private int multiplier;
     private int CPS_value;
+    private int whey;
 
     public void Increment() {
       force += multiplier;
@@ -99,6 +101,16 @@ public class Game : MonoBehaviour, IDataPersistence
       GameManager.upgradesScreen.SetActive(false);
     }
 
+    public void openShopMenu() {
+      GameManager.mainScreen.SetActive(false);
+      GameManager.shopScreen.SetActive(true);
+    }
+
+    public void closeShopMenu() {
+      GameManager.mainScreen.SetActive(true);
+      GameManager.shopScreen.SetActive(false);
+    }
+
     public void openProfileMenu() {
       GameManager.mainScreen.SetActive(false);
       GameManager.profileScreen.SetActive(true);
@@ -110,7 +122,8 @@ public class Game : MonoBehaviour, IDataPersistence
     }
 
     void Update() {
-      ui.text = force.ToString();
+      forceText.text = force.ToString();
+      wheyText.text = whey.ToString();
 
       if (cpsCoroutine == null && CPS_value > 0) {
         cpsCoroutine = StartCoroutine(UpdateForceCPS());
@@ -122,6 +135,7 @@ public class Game : MonoBehaviour, IDataPersistence
         this.force = data.force;
         this.multiplier = data.multiplier;
         this.CPS_value = data.CPS_value;
+        this.whey = data.whey;
     }
 
     public void SaveData(ref GameData data)
@@ -129,6 +143,7 @@ public class Game : MonoBehaviour, IDataPersistence
         data.force = this.force;
         data.multiplier = this.multiplier;
         data.CPS_value = this.CPS_value;
+        data.whey = this.whey;
     }
 
 }
