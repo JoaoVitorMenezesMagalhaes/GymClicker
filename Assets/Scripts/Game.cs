@@ -210,9 +210,11 @@ public class Game : MonoBehaviour, IDataPersistence
         Clickers[randAnimation].SetActive(false);
         randAnimation = Random.Range(0, 3);
         Clickers[randAnimation].SetActive(true);
-        }
-      
-      
+        } 
+    }
+
+    public void rewardAd(){
+      this.force += 1000;
     }
 
 }
