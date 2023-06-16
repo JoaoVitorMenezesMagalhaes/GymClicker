@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,17 @@ public class GameManager : MonoBehaviour
     public static GameObject prestigeScreen;
 
     public static Dictionary<int, List<int>> CPS_values = new Dictionary<int, List<int>>();
+
+
+    private void Awake()
+    {
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) ||
+            !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead)  )
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+        }
+    }
 
     void Start() {
       mainScreen = GameObject.FindWithTag("MainScreen");

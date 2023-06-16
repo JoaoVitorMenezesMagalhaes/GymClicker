@@ -68,6 +68,11 @@ public class DataPersistenceManager : MonoBehaviour
     {
         SaveGame();
     }
+    
+    private void OnApplicationPause()
+    {
+        SaveGame();
+    }
 
     private void AddDataPersistenceObjects()
     {
