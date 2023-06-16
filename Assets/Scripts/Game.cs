@@ -206,9 +206,9 @@ public class Game : MonoBehaviour, IDataPersistence
     public void ChangeAnimation()
     {
       int rand = Random.Range(0, 100);
-      if (rand < 60){
+      if (rand < 75){
         Clickers[randAnimation].SetActive(false);
-        randAnimation = Random.Range(0, 3);
+        randAnimation = Random.Range(0, 9);
         Clickers[randAnimation].SetActive(true);
         } 
     }
