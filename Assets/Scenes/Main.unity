@@ -309,7 +309,7 @@ Animator:
   m_GameObject: {fileID: 16247940}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e26b5c7662aece94cbb8333bcf66716b, type: 2}
+  m_Controller: {fileID: 9100000, guid: ed4daff8fdbde6e4191603fa79218019, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -741039872, guid: 44ad4c0e0b9cf2b41914c45d5cb6309c, type: 3}
+  m_Sprite: {fileID: 2015387449, guid: 14b280e0b489ac64385779588c2040bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2883,6 +2883,11 @@ MonoBehaviour:
   prestigeValue: {fileID: 129706568}
   wheyEarningsValue: {fileID: 519857900}
   wheySpentValue: {fileID: 845868752}
+  Clickers:
+  - {fileID: 1890149319}
+  - {fileID: 16247940}
+  - {fileID: 2015292091}
+  - {fileID: 264293466}
 --- !u!1 &500016560
 GameObject:
   m_ObjectHideFlags: 0
@@ -10246,7 +10251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1890149320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10824,7 +10829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2015292092
 RectTransform:
   m_ObjectHideFlags: 0

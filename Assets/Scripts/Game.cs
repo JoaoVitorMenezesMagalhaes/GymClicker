@@ -14,6 +14,7 @@ public class Game : MonoBehaviour, IDataPersistence
     public TextMeshProUGUI prestigeValue;
     public TextMeshProUGUI wheyEarningsValue;
     public TextMeshProUGUI wheySpentValue;
+    public List<GameObject> Clickers;  
 
     private Coroutine cpsCoroutine; 
 
@@ -21,6 +22,7 @@ public class Game : MonoBehaviour, IDataPersistence
     private int multiplier;
     private int CPS_value;
     private int whey;
+    private int randAnimation = 0;
 
     private int wheyToClaim;
 
@@ -57,7 +59,7 @@ public class Game : MonoBehaviour, IDataPersistence
             multiplier += 1000;
             force -= 12000;
         }
-
+        ChangeAnimation();
         forceValue.text = force.ToString();
     }
 
@@ -191,6 +193,18 @@ public class Game : MonoBehaviour, IDataPersistence
         data.totalPrestiges = int.Parse(this.prestigeValue.text);
         data.lifetimeWheyEarned = int.Parse(this.wheyEarningsValue.text);
         data.lifetimeWheySpent = int.Parse(this.wheySpentValue.text);
+    }
+
+    public void ChangeAnimation()
+    {
+      int rand = Random.Range(0, 100);
+      if (rand < 60){
+        Clickers[randAnimation].SetActive(false);
+        randAnimation = Random.Range(0, 3);
+        Clickers[randAnimation].SetActive(true);
+        }
+      
+      
     }
 
 }
