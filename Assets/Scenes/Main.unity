@@ -3162,8 +3162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5be2bf9a4695a6448500abe5b56766f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceText: {fileID: 1838700856}
-  wheyText: {fileID: 1441430638}
+  forceTextMain: {fileID: 1838700856}
+  wheyTextMain: {fileID: 1441430638}
+  forceTextUpgrade: {fileID: 377521570}
+  wheyTextUpgrade: {fileID: 1847125187}
+  forceTextShop: {fileID: 812979784}
+  wheyTextShop: {fileID: 1360640413}
   wheyToClaimText: {fileID: 392924568}
   forceValue: {fileID: 1106503875}
   sessionValue: {fileID: 1019548295}
