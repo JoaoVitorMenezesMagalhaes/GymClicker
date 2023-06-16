@@ -5,8 +5,12 @@ using TMPro;
 
 public class Game : MonoBehaviour, IDataPersistence
 {
-    public TextMeshProUGUI forceText;
-    public TextMeshProUGUI wheyText;
+    public TextMeshProUGUI forceTextMain;
+    public TextMeshProUGUI wheyTextMain;
+    public TextMeshProUGUI forceTextUpgrade;
+    public TextMeshProUGUI wheyTextUpgrade;
+    public TextMeshProUGUI forceTextShop;
+    public TextMeshProUGUI wheyTextShop;
     public TextMeshProUGUI wheyToClaimText;
     public TextMeshProUGUI forceValue;
     public TextMeshProUGUI sessionValue;
@@ -159,8 +163,12 @@ public class Game : MonoBehaviour, IDataPersistence
     void Update() {
       wheyToClaim = Mathf.RoundToInt((Mathf.Sqrt(int.Parse(lifetimeValue.text) / 1000000000000000) * 150) - whey);
 
-      forceText.text = force.ToString();
-      wheyText.text = whey.ToString();
+      forceTextMain.text = force.ToString();
+      forceTextUpgrade.text = force.ToString();
+      forceTextShop.text = force.ToString();
+      wheyTextMain.text = whey.ToString();
+      wheyTextUpgrade.text = whey.ToString();
+      wheyTextShop.text = whey.ToString();
       wheyToClaimText.text = wheyToClaim.ToString();
 
       if (cpsCoroutine == null && CPS_value > 0) {
