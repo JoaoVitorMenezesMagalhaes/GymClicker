@@ -15,6 +15,7 @@ public class GameData
     public int totalPrestiges;
     public int lifetimeWheyEarned;
     public int lifetimeWheySpent;
+    public string lastDate;
 
     public GameData()
     {    
@@ -28,5 +29,6 @@ public class GameData
         this.totalPrestiges = 0;
         this.lifetimeWheyEarned = 0;
         this.lifetimeWheySpent = 0;
+        this.lastDate = "";
     }
 }

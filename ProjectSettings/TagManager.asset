@@ -9,6 +9,7 @@ TagManager:
   - ProfileScreen
   - ShopScreen
   - PrestigeScreen
+  - WelcomeBackScreen
   layers:
   - Default
   - TransparentFX

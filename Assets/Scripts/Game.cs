@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Game : MonoBehaviour, IDataPersistence
 {
@@ -18,6 +19,7 @@ public class Game : MonoBehaviour, IDataPersistence
     public TextMeshProUGUI prestigeValue;
     public TextMeshProUGUI wheyEarningsValue;
     public TextMeshProUGUI wheySpentValue;
+    public TextMeshProUGUI awayEarnedText;
     public List<GameObject> Clickers;  
 
     private Coroutine cpsCoroutine; 
@@ -27,6 +29,9 @@ public class Game : MonoBehaviour, IDataPersistence
     private int CPS_value;
     private int whey;
     private int randAnimation = 0;
+    private int forceGainedWhileAway = 0;
+    private string lastDate;
+    private string nowDate;
 
     private int wheyToClaim;
 
@@ -174,7 +179,24 @@ public class Game : MonoBehaviour, IDataPersistence
       GameManager.prestigeScreen.SetActive(false);
     }
 
+    public void openWelcomeBackMenu() {
+      GameManager.mainScreen.SetActive(false);
+      GameManager.welcomeBackScreen.SetActive(true);
+    }
+
+    public void closeWelcomeBackMenu() {
+      GameManager.mainScreen.SetActive(true);
+      GameManager.welcomeBackScreen.SetActive(false);
+    }
+
+
     void Update() {
+      if (forceGainedWhileAway > 0) {
+        openWelcomeBackMenu();
+      } else {
+        closeWelcomeBackMenu();
+      }	
+
       wheyToClaim = Mathf.RoundToInt((Mathf.Sqrt(int.Parse(lifetimeValue.text) / 1000000000) * 150) - whey);
 
       forceTextMain.text = force.formatNumber();
@@ -184,10 +206,24 @@ public class Game : MonoBehaviour, IDataPersistence
       wheyTextUpgrade.text = whey.ToString();
       wheyTextShop.text = whey.ToString();
       wheyToClaimText.text = wheyToClaim.ToString();
+      awayEarnedText.text = forceGainedWhileAway.ToString();
 
       if (cpsCoroutine == null && CPS_value > 0) {
         cpsCoroutine = StartCoroutine(UpdateForceCPS());
       }
+    }
+
+    public void claimAway(){
+      IdleNumber idleGained = new IdleNumber(forceGainedWhileAway);
+      force.add(idleGained);
+      idleGained = null;
+      forceGainedWhileAway = 0;
+      closeWelcomeBackMenu();
+    }
+
+    public void rewardAd(){
+      forceGainedWhileAway *= 2;
+      claimAway();
     }
 
     public void LoadData(GameData data)
@@ -202,6 +238,7 @@ public class Game : MonoBehaviour, IDataPersistence
         this.prestigeValue.text = data.totalPrestiges.ToString();
         this.wheyEarningsValue.text = data.lifetimeWheyEarned.ToString();
         this.wheySpentValue.text = data.lifetimeWheySpent.ToString();
+        this.lastDate = data.lastDate;
     }
 
     public void SaveData(ref GameData data)
@@ -216,20 +253,39 @@ public class Game : MonoBehaviour, IDataPersistence
         data.totalPrestiges = int.Parse(this.prestigeValue.text);
         data.lifetimeWheyEarned = int.Parse(this.wheyEarningsValue.text);
         data.lifetimeWheySpent = int.Parse(this.wheySpentValue.text);
+        data.lastDate = this.lastDate;
     }
 
     public void ChangeAnimation()
     {
-      int rand = Random.Range(0, 100);
+      int rand = UnityEngine.Random.Range(0, 100);
       if (rand < 75){
         Clickers[randAnimation].SetActive(false);
-        randAnimation = Random.Range(0, 9);
+        randAnimation = UnityEngine.Random.Range(0, 9);
         Clickers[randAnimation].SetActive(true);
       } 
     }
-
-    public void rewardAd(){
-      this.force.value += 1000;
+    
+    public void timeAway(){
+        nowDate = System.DateTime.Now.ToString();
+        if (!string.IsNullOrEmpty(lastDate))
+        {
+            DateTime nowDateTime = DateTime.Parse(nowDate);
+            DateTime lastDateTime = DateTime.Parse(lastDate);
+            double ts = (nowDateTime - lastDateTime).TotalSeconds;
+            forceGainedWhileAway = (int)(ts * CPS_value);
+        }
     }
-
+    
+    private void OnApplicationFocus(bool hasFocus)
+    {
+      if (hasFocus)
+      {
+          timeAway();
+      }
+      else
+      {
+          lastDate = System.DateTime.Now.ToString();
+      }    
+    }
 }

@@ -14,6 +14,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     private FileDataHandler dataHandler;
 
+    public Game game;
+
     public static DataPersistenceManager instance { get; private set; }
 
     private void Awake()
@@ -52,6 +54,8 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
+
+        game.timeAway();
     }
 
     public void SaveGame()

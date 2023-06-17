@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameObject shopScreen;
     public static GameObject profileScreen;
     public static GameObject prestigeScreen;
+    public static GameObject welcomeBackScreen;
 
     public static Dictionary<int, List<int>> CPS_values = new Dictionary<int, List<int>>();
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
       profileScreen = GameObject.FindWithTag("ProfileScreen");
       prestigeScreen = GameObject.FindWithTag("PrestigeScreen");
       shopScreen = GameObject.FindWithTag("ShopScreen");
+      welcomeBackScreen = GameObject.FindWithTag("WelcomeBackScreen");
 
       upgradesScreen.SetActive(false);
       prestigeScreen.SetActive(false);

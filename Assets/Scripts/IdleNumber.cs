@@ -36,7 +36,6 @@ public class IdleNumber {
   }
 
   public void add(IdleNumber num) {
-    Debug.Log("ADD: " + num.value + " " + num.exp);
     if (this.exp == num.exp) {
       this.value += num.value;
       if (this.value >= 1000.0) {
@@ -52,13 +51,10 @@ public class IdleNumber {
         this.value /= 1000.0;
       }
     } else {
-      Debug.Log("ELSE");
-      Debug.Log("ACTUAL: " + this.value + " " + this.exp);
       double factor = Math.Pow(10, num.exp - this.exp);
       this.value /= factor;
       this.value += (num.value * Math.Pow(10, num.exp));
       if (this.value >= 1000.0) {
-        Debug.Log("MAIOR Q 1000");
         this.exp = num.exp;
         this.value /= 1000.0;
       }
@@ -90,7 +86,6 @@ public class IdleNumber {
         this.exp = num.exp - 3;
       }
     }
-    Debug.Log("SUB: " + this.value + " " + this.exp);
     num = null;
   }
 
