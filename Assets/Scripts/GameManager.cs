@@ -38,7 +38,13 @@ public class GameManager : MonoBehaviour
       profileScreen.SetActive(false);
       shopScreen.SetActive(false);
 
-      CPS_values.Add(1, new List<int> {1, 100});
-      CPS_values.Add(2, new List<int> {10, 800});
+      CPS_values.Add(1, new List<int> {1, 18000});
+      CPS_values.Add(2, new List<int> {8, 130000});
+      CPS_values.Add(3, new List<int> {20, 300000});
+      CPS_values.Add(4, new List<int> {100, 1400000});
+      CPS_values.Add(5, new List<int> {500, 6500000});
+      CPS_values.Add(6, new List<int> {2000, 25000000});
+      CPS_values.Add(7, new List<int> {10000, 120000000});
+      CPS_values.Add(8, new List<int> {100000, 1000000000});
     }
 }

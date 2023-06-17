@@ -54,33 +54,69 @@ public class Game : MonoBehaviour, IDataPersistence
 
     public void Buy(int num)
     {
-        if (num == 1 && force.canBuy(25)) {
+        if (num == 1 && force.canBuy(100)) {
           multiplier += 1;
-          force.sub(25);
+          force.sub(100);
         }
         
-        if(num == 2 && force.canBuy(125))
+        if(num == 2 && force.canBuy(450))
         {
-            multiplier += 10;
-            force.sub(125); 
+            multiplier += 5;
+            force.sub(450); 
         }
 
-        if(num == 3 && force.canBuy(1500))
+        if(num == 3 && force.canBuy(1200))
         {
-            multiplier += 100;
-            force.sub(1500);
+            multiplier += 15;
+            force.sub(1200);
         }
 
-        if(num == 4 && force.canBuy(12000))
+        if(num == 4 && force.canBuy(5000))
         {
-            multiplier += 1000;
-            force.sub(12000);
+            multiplier += 70;
+            force.sub(5000);
         }
 
-        if (num == 5 && force.canBuy(500000)) {
-          multiplier += 500000;
+        if (num == 5 && force.canBuy(10000)) {
+          multiplier += 150;
+          force.sub(10000);
+        }
+
+        if (num == 6 && force.canBuy(25000)) {
+          multiplier += 400;
+          force.sub(25000);
+        }
+
+        if (num == 7 && force.canBuy(100000)) {
+          multiplier += 1800;
+          force.sub(100000);
+        }
+
+        if (num == 8 && force.canBuy(500000)) {
+          multiplier += 10000;
           force.sub(500000);
         }
+
+        if (num == 9 && force.canBuy(1000000)) {
+          multiplier += 25000;
+          force.sub(1000000);
+        }
+
+        if (num == 10 && force.canBuy(200000000)) {
+          multiplier += 5500000;
+          force.sub(200000000);
+        }
+
+        if (num == 11 && force.canBuy(3000000000)) {
+          multiplier += 85000000;
+          force.sub(3000000000);
+        }
+
+        if (num == 12 && force.canBuy(400000000000)) {
+          multiplier += 13000000000;
+          force.sub(400000000000);
+        }
+
         ChangeAnimation();
         forceValue.text = force.formatNumber();
     }
@@ -170,6 +206,10 @@ public class Game : MonoBehaviour, IDataPersistence
 
     public void openWelcomeBackMenu() {
       GameManager.mainScreen.SetActive(false);
+      GameManager.prestigeScreen.SetActive(false);
+      GameManager.profileScreen.SetActive(false);
+      GameManager.shopScreen.SetActive(false);
+      GameManager.upgradesScreen.SetActive(false);
       GameManager.welcomeBackScreen.SetActive(true);
     }
 
@@ -270,7 +310,7 @@ public class Game : MonoBehaviour, IDataPersistence
             DateTime nowDateTime = DateTime.Parse(nowDate);
             DateTime lastDateTime = DateTime.Parse(lastDate);
             double ts = (nowDateTime - lastDateTime).TotalSeconds;
-            forceGainedWhileAway = (int)(ts * CPS_value);
+            forceGainedWhileAway = (long)(ts * CPS_value);
         }
     }
     
