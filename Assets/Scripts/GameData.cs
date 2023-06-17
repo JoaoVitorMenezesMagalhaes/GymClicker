@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public int force;
+    public double forceVal;
+    public int forceExp;
     public int multiplier;
     public int CPS_value;
     public int whey;
@@ -17,7 +18,8 @@ public class GameData
 
     public GameData()
     {    
-        this.force = 0;
+        this.forceVal = 0;
+        this.forceExp = 0;
         this.multiplier = 1;
         this.CPS_value = 0;
         this.whey = 0;
