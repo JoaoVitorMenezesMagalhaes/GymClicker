@@ -23,6 +23,8 @@ public class Game : MonoBehaviour, IDataPersistence
     public TextMeshProUGUI awayEarnedText;
     public List<GameObject> Clickers;  
 
+    public playSound playSound;
+
     private Coroutine cpsCoroutine; 
 
     private IdleNumber force;
@@ -52,74 +54,135 @@ public class Game : MonoBehaviour, IDataPersistence
       lifetimeValue.text = (long.Parse(lifetimeValue.text) + multiplier).ToString();
     }
 
+    public void BuyWhey(int num)
+    {
+        if (num == 1 && whey >= 700) {
+          multiplier += 10000;
+          whey -= 700;
+          playSound.playCash();
+        }
+
+        if (num == 2 && whey >= 1500) {
+          multiplier += 30000;
+          whey -= 1500;
+          playSound.playCash();
+        }
+        
+        if (num == 3 && whey >= 5000) {
+          multiplier += 100000;
+          whey -= 5000;
+          playSound.playCash();
+        }
+
+        if (num == 4 && whey >= 10000) {
+          multiplier += 250000;
+          whey -= 10000;
+          playSound.playCash();
+        }
+
+        if (num == 5 && whey >= 40000) {
+          multiplier += 1100000;
+          whey -= 40000;
+          playSound.playCash();
+        }
+        
+        if (num == 6 && whey >= 100000) {
+          multiplier += 3000000;
+          whey -= 100000;
+          playSound.playCash();
+        }
+        
+        if (num == 7 && whey >= 1000000) {
+          multiplier += 50000000;
+          whey -= 1000000;
+          playSound.playCash();
+        }
+
+        ChangeAnimation();
+    }
+
     public void Buy(int num)
     {
         if (num == 1 && force.canBuy(100)) {
           multiplier += 1;
           force.sub(100);
+          playSound.playCash();
         }
         
         if(num == 2 && force.canBuy(450))
         {
             multiplier += 5;
-            force.sub(450); 
+            force.sub(450);
+            playSound.playCash(); 
         }
 
         if(num == 3 && force.canBuy(1200))
         {
             multiplier += 15;
             force.sub(1200);
+            playSound.playCash();
         }
 
         if(num == 4 && force.canBuy(5000))
         {
             multiplier += 70;
             force.sub(5000);
+            playSound.playCash();
         }
 
         if (num == 5 && force.canBuy(10000)) {
           multiplier += 150;
           force.sub(10000);
+          playSound.playCash();
         }
 
         if (num == 6 && force.canBuy(25000)) {
           multiplier += 400;
           force.sub(25000);
+          playSound.playCash();
         }
 
         if (num == 7 && force.canBuy(100000)) {
           multiplier += 1800;
           force.sub(100000);
+          playSound.playCash();
         }
 
         if (num == 8 && force.canBuy(500000)) {
           multiplier += 10000;
           force.sub(500000);
+          playSound.playCash();
         }
 
         if (num == 9 && force.canBuy(1000000)) {
           multiplier += 25000;
           force.sub(1000000);
+          playSound.playCash();
         }
 
         if (num == 10 && force.canBuy(200000000)) {
           multiplier += 5500000;
           force.sub(200000000);
+          playSound.playCash();
         }
 
         if (num == 11 && force.canBuy(3000000000)) {
           multiplier += 85000000;
           force.sub(3000000000);
+          playSound.playCash();
         }
 
         if (num == 12 && force.canBuy(400000000000)) {
           multiplier += 13000000000;
           force.sub(400000000000);
+          playSound.playCash();
         }
 
         ChangeAnimation();
         forceValue.text = force.formatNumber();
     }
+
+
 
     public void CPS(int num)
     {
@@ -131,6 +194,8 @@ public class Game : MonoBehaviour, IDataPersistence
             force.sub((double) cost);
             
             CPS_value += value;
+
+            playSound.playCash();
         }
     }
 
