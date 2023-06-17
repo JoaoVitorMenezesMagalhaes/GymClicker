@@ -23,57 +23,68 @@ public class Game : MonoBehaviour, IDataPersistence
     private Coroutine cpsCoroutine; 
 
     private IdleNumber force;
-    private int multiplier;
-    private int CPS_value;
-    private int whey;
+    private IdleNumber multiplier;
+    private IdleNumber CPS_value;
+    private IdleNumber whey;
     private int randAnimation = 0;
 
-    private int wheyToClaim;
+    private IdleNumber wheyToClaim;
 
     public void Increment() {
       // force += (multiplier + (multiplier * ((whey*2)/100)));
-      IdleNumber mult;
-      if (whey > 0) {
-        mult = new IdleNumber(multiplier * ((whey*2)/100));
+      if (whey.value > 0) {
+        // mult = new IdleNumber(multiplier * ((whey*2)/100));
+        IdleNumber perc = new IdleNumber(2, 0);
+        IdleNumber div = new IdleNumber(100, 0);
+        IdleNumber wheyCp = new IdleNumber(whey.value, whey.exp);
+        wheyCp.mult(perc);
+        wheyCp.div(div);
+        IdleNumber multCp = new IdleNumber(multiplier.value, multiplier.exp);
+        multCp.mult(wheyCp);
+        multCp.add(multCp.value, multCp.exp);
+        force.add(multCp.value, multCp.exp);
+        perc = null;
+        div = null;
+        wheyCp = null;
+        multCp = null;
       } else {
-        mult = new IdleNumber(multiplier);
+        force.add(multiplier.value, multiplier.exp);
       }
-      force.add(mult);
-      mult = null;
 
       forceValue.text = force.formatNumber();
+
       sessionValue.text = (int.Parse(sessionValue.text) + multiplier).ToString();
       lifetimeValue.text = (int.Parse(lifetimeValue.text) + multiplier).ToString();
     }
 
     public void Buy(int num)
     {
-        if (num == 1 && force.canBuy(25)) {
-          multiplier += 1;
-          force.sub(25);
+        if (num == 1 && force.canBuy(25, 0)) {
+          multiplier.add(1, 0);
+          force.sub(25, 0);
         }
         
-        if(num == 2 && force.canBuy(125))
+        if(num == 2 && force.canBuy(125, 0))
         {
-            multiplier += 10;
-            force.sub(125); 
+            multiplier.add(10, 0);
+            force.sub(125, 0); 
         }
 
-        if(num == 3 && force.canBuy(1500))
+        if(num == 3 && force.canBuy(1.5, 3))
         {
-            multiplier += 100;
-            force.sub(1500);
+            multiplier.add(100, 0);
+            force.sub(1.5, 3);
         }
 
-        if(num == 4 && force.canBuy(12000))
+        if(num == 4 && force.canBuy(12, 3))
         {
-            multiplier += 1000;
-            force.sub(12000);
+            multiplier.add(1, 3);
+            force.sub(12, 3);
         }
 
-        if (num == 5 && force.canBuy(500000)) {
-          multiplier += 500000;
-          force.sub(500000);
+        if (num == 5 && force.canBuy(500, 3)) {
+          multiplier.add(500, 3);
+          force.sub(500, 3);
         }
         ChangeAnimation();
         forceValue.text = force.ToString();
@@ -84,19 +95,28 @@ public class Game : MonoBehaviour, IDataPersistence
         int cost =  GameManager.CPS_values[num][1];
         int value = GameManager.CPS_values[num][0];
 
-        if(force.value >= cost)
+        if(force.canBuy(cost, (int) Mathf.Floor(Mathf.Log10(Mathf.Abs(cost)) / 3) * 3))
         {
-            force.value -= cost;
+            force.sub(cost, (int) Mathf.Floor(Mathf.Log10(Mathf.Abs(cost)) / 3) * 3);
             
-            CPS_value += value;
+            CPS_value.add(value, (int) Mathf.Floor(Mathf.Log10(Mathf.Abs(value)) / 3) * 3);
         }
     }
 
     private IEnumerator UpdateForceCPS() {
       while (true) {
-        IdleNumber mult = new IdleNumber(CPS_value + (CPS_value * ((whey*2)/100)));
-        // force += (CPS_value + (CPS_value * ((whey*2)/100)));
-        force.add(mult);
+        IdleNumber perc = new IdleNumber(2, 0);
+        IdleNumber div = new IdleNumber(100, 0);
+        IdleNumber wheyCp = new IdleNumber(whey.value, whey.exp);
+        wheyCp.mult(perc);
+        wheyCp.div(div);
+        IdleNumber cpsCp = new IdleNumber(CPS_value.value, CPS_value.exp);
+        cpsCp.mult(wheyCp);
+        cpsCp.add(cpsCp.value, cpsCp.exp);
+        force.add(cpsCp.value, cpsCp.exp);
+        perc = null;
+        div = null;
+
         forceValue.text = force.formatNumber();
         sessionValue.text = (int.Parse(sessionValue.text) + CPS_value).ToString();
         lifetimeValue.text = (int.Parse(lifetimeValue.text) + CPS_value).ToString();
@@ -105,33 +125,23 @@ public class Game : MonoBehaviour, IDataPersistence
     }
 
     public void Prestige() {
-      if (wheyToClaim > 0) {
-        multiplier = 1;
+      if (wheyToClaim.value > 0) {
+        multiplier.value = 1;
+        multiplier.exp = 0;
         force.value = 0;
-        CPS_value = 0;
-        whey += wheyToClaim;
+        force.exp = 0;
+        CPS_value.value = 0;
+        CPS_value.exp = 0;
+        whey.add(wheyToClaim.value, wheyToClaim.exp);
 
         sessionValue.text = "0";
         forceValue.text = "0";
         prestigeValue.text = (int.Parse(prestigeValue.text) + 1).ToString();
         wheyEarningsValue.text = (int.Parse(prestigeValue.text) + wheyToClaim).ToString();
 
-        wheyToClaim = 0;
+        wheyToClaim.value = 0;
+        wheyToClaim.exp = 0;
       }
-    }
-
-    public void HardReset() {
-      multiplier = 1;
-      force.value = 0;
-      CPS_value = 0;
-      whey += wheyToClaim;
-
-      sessionValue.text = "0";
-      forceValue.text = "0";
-      prestigeValue.text = "0";
-      wheyEarningsValue.text = "0";
-
-      wheyToClaim = 0;
     }
 
     public void openUpgradesMenu() {
@@ -185,17 +195,17 @@ public class Game : MonoBehaviour, IDataPersistence
       wheyTextShop.text = whey.ToString();
       wheyToClaimText.text = wheyToClaim.ToString();
 
-      if (cpsCoroutine == null && CPS_value > 0) {
+      if (cpsCoroutine == null && CPS_value.value > 0) {
         cpsCoroutine = StartCoroutine(UpdateForceCPS());
       }
     }
 
     public void LoadData(GameData data)
     {
-        this.force = new IdleNumber(data.forceVal * Mathf.Pow(10, data.forceExp));
-        this.multiplier = data.multiplier;
-        this.CPS_value = data.CPS_value;
-        this.whey = data.whey;
+        this.force = new IdleNumber(data.forceVal, data.forceExp);
+        this.multiplier = new IdleNumber(data.multVal, data.multExp);
+        this.CPS_value = new IdleNumber(data.CPS_valueVal, data.CPS_valueExp);
+        this.whey = new IdleNumber(data.wheyVal, data.wheyExp);
         this.forceValue.text = this.force.formatNumber();
         this.sessionValue.text = data.sessionForce.ToString();
         this.lifetimeValue.text = data.lifetimeForce.ToString();
@@ -208,9 +218,12 @@ public class Game : MonoBehaviour, IDataPersistence
     {
         data.forceVal = this.force.value;
         data.forceExp = this.force.exp;
-        data.multiplier = this.multiplier;
-        data.CPS_value = this.CPS_value;
-        data.whey = this.whey;
+        data.multVal = this.multiplier.value;
+        data.multExp = this.multiplier.exp;
+        data.CPS_valueVal = this.CPS_value.value;
+        data.CPS_valueExp = this.CPS_value.exp;
+        data.wheyVal = this.whey.value;
+        data.wheyExp = this.whey.exp;
         data.sessionForce = int.Parse(this.sessionValue.text);
         data.lifetimeForce = int.Parse(this.lifetimeValue.text);
         data.totalPrestiges = int.Parse(this.prestigeValue.text);

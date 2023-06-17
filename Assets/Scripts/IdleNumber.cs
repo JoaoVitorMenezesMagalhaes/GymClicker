@@ -9,17 +9,9 @@ public class IdleNumber {
 
   public Dictionary<int, string> names;
 
-  public IdleNumber(double val) {
-    if (val < 1000.0) {
-      this.value = val;
-      this.exp = 0;
-    } else {
-      int e = (int) Math.Floor(Math.Log10(Math.Abs(val)) / 3) * 3;
-      double num = val / (Math.Pow(10, e));
-
-      this.value = num;
-      this.exp = e;
-    }
+  public IdleNumber(double val, int exp) {
+    this.value = val;
+    this.exp = exp;
 
     this.names = new Dictionary<int, string>();
 
@@ -35,8 +27,8 @@ public class IdleNumber {
     this.names.Add(33, "Decillion");
   }
 
-  public void add(IdleNumber num) {
-    Debug.Log("ADD: " + num.value + " " + num.exp);
+  public void add(double val, int exp) {
+    IdleNumber num = new IdleNumber(val, exp);
     if (this.exp == num.exp) {
       this.value += num.value;
       if (this.value >= 1000.0) {
@@ -52,21 +44,18 @@ public class IdleNumber {
         this.value /= 1000.0;
       }
     } else {
-      Debug.Log("ELSE");
-      Debug.Log("ACTUAL: " + this.value + " " + this.exp);
       double factor = Math.Pow(10, num.exp - this.exp);
       this.value /= factor;
       this.value += (num.value * Math.Pow(10, num.exp));
       if (this.value >= 1000.0) {
-        Debug.Log("MAIOR Q 1000");
         this.exp = num.exp;
         this.value /= 1000.0;
       }
     }
   }
 
-  public void sub(double cost) {
-    IdleNumber num = new IdleNumber(cost);
+  public void sub(double cost, int exp) {
+    IdleNumber num = new IdleNumber(cost, exp);
     if (this.exp == num.exp) {
       this.value -= num.value;
       if (this.value < 1.0) {
@@ -90,13 +79,38 @@ public class IdleNumber {
         this.exp = num.exp - 3;
       }
     }
-    Debug.Log("SUB: " + this.value + " " + this.exp);
     num = null;
   }
 
-  public bool canBuy(double cost) {
-    IdleNumber temp = new IdleNumber(this.value * Math.Pow(10, this.exp));
-    IdleNumber num = new IdleNumber(cost);
+  public void mult(IdleNumber factor) {
+    this.value *= factor.value;
+    this.exp += factor.exp;
+
+    if (this.value >= 1000.0) {
+      int additionalExp = (int) Math.Floor(Math.Log10(Math.Abs(this.value)) / 3) * 3;
+      double num = this.value / (Math.Pow(10, additionalExp));
+
+      this.value = num;
+      this.exp += additionalExp;
+    }
+ }
+
+  public void div(IdleNumber divisor) {
+    this.value /= divisor.value;
+    this.exp -= divisor.exp;
+
+    if (this.value < 1.0) {
+      int reductionExp = (int) Math.Floor(Math.Log10(Math.Abs(this.value)) / 3) * 3;
+      double num = this.value * (Math.Pow(10, reductionExp));
+
+      this.value = num;
+      this.exp -= reductionExp;
+    }
+  }
+
+  public bool canBuy(double cost, int exp) {
+    IdleNumber temp = new IdleNumber(this.value, this.exp);
+    IdleNumber num = new IdleNumber(cost, exp);
     if (temp.exp == num.exp) {
       temp.value -= num.value;
       if (temp.value < 1.0) {

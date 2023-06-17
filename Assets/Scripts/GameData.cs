@@ -7,9 +7,12 @@ public class GameData
 {
     public double forceVal;
     public int forceExp;
-    public int multiplier;
-    public int CPS_value;
-    public int whey;
+    public double multVal;
+    public int multExp;
+    public double CPS_valueVal;
+    public int CPS_valueExp;
+    public double wheyVal;
+    public int wheyExp;
     public int sessionForce;
     public int lifetimeForce;
     public int totalPrestiges;
@@ -20,9 +23,12 @@ public class GameData
     {    
         this.forceVal = 0;
         this.forceExp = 0;
-        this.multiplier = 1;
-        this.CPS_value = 0;
-        this.whey = 0;
+        this.multVal = 1;
+        this.multExp = 0;
+        this.CPS_valueVal = 0;
+        this.CPS_valueExp = 0;
+        this.wheyVal = 0;
+        this.wheyExp = 0;
         this.sessionForce = 0;
         this.lifetimeForce = 0;
         this.totalPrestiges = 0;
