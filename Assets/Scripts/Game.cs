@@ -189,12 +189,15 @@ public class Game : MonoBehaviour, IDataPersistence
       GameManager.welcomeBackScreen.SetActive(false);
     }
 
+    public void closeOnlyWelcomeBackMenu() {
+      GameManager.welcomeBackScreen.SetActive(false);
+    }
 
     void Update() {
       if (forceGainedWhileAway > 0) {
         openWelcomeBackMenu();
       } else {
-        closeWelcomeBackMenu();
+        closeOnlyWelcomeBackMenu();
       }	
 
       wheyToClaim = Mathf.RoundToInt((Mathf.Sqrt(int.Parse(lifetimeValue.text) / 1000000000) * 150) - whey);
