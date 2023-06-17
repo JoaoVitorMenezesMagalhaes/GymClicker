@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -27,6 +28,9 @@ public class Game : MonoBehaviour, IDataPersistence
     private int CPS_value;
     private int whey;
     private int randAnimation = 0;
+    private int forceGainedWhileAway = 0;
+    private string lastDate;
+    private string nowDate;
 
     private int wheyToClaim;
 
@@ -161,6 +165,11 @@ public class Game : MonoBehaviour, IDataPersistence
     }
 
     void Update() {
+      if (forceGainedWhileAway > 0){
+        this.force += forceGainedWhileAway;
+        forceGainedWhileAway = 0;
+      }
+      
       wheyToClaim = Mathf.RoundToInt((Mathf.Sqrt(int.Parse(lifetimeValue.text) / 1000000000000000) * 150) - whey);
 
       forceTextMain.text = force.ToString();
@@ -188,6 +197,7 @@ public class Game : MonoBehaviour, IDataPersistence
         this.prestigeValue.text = data.totalPrestiges.ToString();
         this.wheyEarningsValue.text = data.lifetimeWheyEarned.ToString();
         this.wheySpentValue.text = data.lifetimeWheySpent.ToString();
+        this.lastDate = data.lastDate;
     }
 
     public void SaveData(ref GameData data)
@@ -201,14 +211,15 @@ public class Game : MonoBehaviour, IDataPersistence
         data.totalPrestiges = int.Parse(this.prestigeValue.text);
         data.lifetimeWheyEarned = int.Parse(this.wheyEarningsValue.text);
         data.lifetimeWheySpent = int.Parse(this.wheySpentValue.text);
+        data.lastDate = this.lastDate;
     }
 
     public void ChangeAnimation()
     {
-      int rand = Random.Range(0, 100);
+      int rand = UnityEngine.Random.Range(0, 100);
       if (rand < 75){
         Clickers[randAnimation].SetActive(false);
-        randAnimation = Random.Range(0, 9);
+        randAnimation = UnityEngine.Random.Range(0, 9);
         Clickers[randAnimation].SetActive(true);
         } 
     }
@@ -217,4 +228,28 @@ public class Game : MonoBehaviour, IDataPersistence
       this.force += 1000;
     }
 
+    public void timeAway(){
+          nowDate = System.DateTime.Now.ToString();
+          Debug.Log("nowDate: " + nowDate); 
+          Debug.Log("lastDate: " + lastDate);
+          if (!string.IsNullOrEmpty(lastDate))
+          {
+              DateTime nowDateTime = DateTime.Parse(nowDate);
+              DateTime lastDateTime = DateTime.Parse(lastDate);
+              double ts = (nowDateTime - lastDateTime).TotalSeconds;
+              forceGainedWhileAway = (int)(ts * CPS_value);
+          }
+    }
+    
+    private void OnApplicationFocus(bool hasFocus)
+    {
+      if (hasFocus)
+      {
+          timeAway();
+      }
+      else
+      {
+          lastDate = System.DateTime.Now.ToString();
+      }    
+    }
 }

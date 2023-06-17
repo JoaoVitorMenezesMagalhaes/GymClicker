@@ -9,6 +9,8 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName;
 
     private GameData gameData;
+
+    public Game game;
     
     private List<IDataPersistence> dataPersistenceObjects = new List<IDataPersistence>();
 
@@ -52,6 +54,8 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
+
+        game.timeAway();
     }
 
     public void SaveGame()
