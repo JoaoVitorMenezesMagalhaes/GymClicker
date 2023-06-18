@@ -7,14 +7,14 @@ public class GameData
 {
     public double forceVal;
     public int forceExp;
-    public int multiplier;
-    public int CPS_value;
-    public int whey;
-    public int sessionForce;
-    public int lifetimeForce;
-    public int totalPrestiges;
-    public int lifetimeWheyEarned;
-    public int lifetimeWheySpent;
+    public long multiplier;
+    public long CPS_value;
+    public long whey;
+    public long sessionForce;
+    public long lifetimeForce;
+    public long totalPrestiges;
+    public long lifetimeWheyEarned;
+    public long lifetimeWheySpent;
     public string lastDate;
 
     public GameData()

@@ -56,7 +56,7 @@ public class IdleNumber {
       this.value += (num.value * Math.Pow(10, num.exp));
       if (this.value >= 1000.0) {
         this.exp = num.exp;
-        this.value /= 1000.0;
+        this.value /= (Math.Pow(10, num.exp));
       }
     }
   }
@@ -67,7 +67,9 @@ public class IdleNumber {
       this.value -= num.value;
       if (this.value < 1.0) {
         this.value = Math.Round(this.value * 1000.0, 2);
-        this.exp -= 3;
+        if (this.exp > 0) {
+          this.exp -= 3;
+        }
       }
     } else if (this.exp > num.exp) {
       double factor = Math.Pow(10, this.exp - num.exp);
@@ -96,7 +98,9 @@ public class IdleNumber {
       temp.value -= num.value;
       if (temp.value < 1.0) {
         temp.value *= 1000.0;
-        temp.exp -= 3;
+        if (temp.exp > 0) {
+          temp.exp -= 3;
+        }
       }
     } else if (temp.exp > num.exp) {
       double factor = Math.Pow(10, temp.exp - num.exp);
